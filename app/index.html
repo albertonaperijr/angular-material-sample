@@ -1,0 +1,915 @@
+<!doctype html>
+<html ng-app="angularMaterialSampleApp" ng-controller="MainCtrl as mainCtrl">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular Material Sample App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css" />
+    <link rel="stylesheet" href="styles/font-awesome.min.css" />
+    <!-- <link rel="stylesheet" href="bower_components/ng-scrollbar/dist/ng-scrollbar.min.css"> -->
+    <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body layout="column" ng-cloak>
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div id="main" layout="row" flex class="overflow-hiddenx">
+        <md-sidenav id="side-nav" layout="column" class="md-sidenav-left md-whiteframe-z2 background-color-dark" md-component-id="mainLeft" md-is-locked-open="$mdMedia('gt-lg')">
+          <!-- <div ng-scrollbar rebuild-on-resize> -->
+            <md-toolbar layout="row" class="height-64px layout-align-start-center md-whiteframe-1dp background-color-white-50p">
+                <span class="logo">F</span>
+                <span class="logo-text">FUSE</span>
+            </md-toolbar>
+            <md-content id="menu" layout="column" flex class="background-color-dark color-white" ng-scrollbars ng-scrollbars-config="{axis: 'y'}">
+
+                <!-- Fuse -->
+                <md-button md-no-ink class="title">
+                  FUSE
+                </md-button>
+                <!-- Fuse Componentcs -->
+                <div>
+                  <md-button ng-click="mainCtrl.collapseDashboards = !mainCtrl.collapseDashboards" ng-class="{'background-color-black-12p': mainCtrl.collapseDashboards}">
+                    <md-icon md-font-icon="fa-th-large" class="fa"></md-icon>
+                    Dashboards
+                    <i class="fa" ng-class="{'fa-chevron-up': mainCtrl.collapseDashboards, 'fa-chevron-down': !mainCtrl.collapseDashboards}"></i>
+                  </md-button>
+                  <!-- Dashboards Accordion -->
+                  <div md-accordion-custom="mainCtrl.collapseDashboards" class="background-color-black-12p" id="md-accordion">
+                    <md-button class="padding-left-59px">
+                      Project
+                    </md-button>
+                    <md-button class="padding-left-59px">
+                      Server
+                    </md-button>
+                    <md-button class="padding-left-59px">
+                      Analytics
+                    </md-button>
+                    <div class="clearfix"></div>
+                  </div>
+
+                  <md-button>
+                    <md-icon md-font-icon="fa-calendar" class="fa"></md-icon>
+                    Calendar
+                  </md-button>
+
+                  <md-button>
+                    <md-icon md-font-icon="fa-envelope" class="fa"></md-icon>
+                    Mail
+                    <span class="md-badge-custom">25</span>
+                  </md-button>
+
+                  <md-button>
+                    <md-icon md-font-icon="fa-folder" class="fa"></md-icon>
+                    File Manager
+                  </md-button>
+
+                  <md-button>
+                    <md-icon md-font-icon="fa-check-square" class="fa"></md-icon>
+                    To-Do
+                    <span class="md-badge-custom">6</span>
+                  </md-button>
+
+                  <md-button ng-click="mainCtrl.collapsePages = !mainCtrl.collapsePages" ng-class="{'background-color-black-12p': mainCtrl.collapsePages}">
+                    <md-icon md-font-icon="fa-file-o" class="fa"></md-icon>
+                    Pages
+                    <i class="fa" ng-class="{'fa-chevron-up': mainCtrl.collapsePages, 'fa-chevron-down': !mainCtrl.collapsePages}"></i>
+                  </md-button>
+                  <!-- Pages Accordion -->
+                  <div md-accordion-custom="mainCtrl.collapsePages" class="background-color-black-12p" id="md-accordion">
+
+                    <md-button class="padding-left-59px" ng-click="mainCtrl.collapseAuthentication = !mainCtrl.collapseAuthentication">
+                      Authentication
+                      <i class="fa" ng-class="{'fa-chevron-up': mainCtrl.collapseAuthentication, 'fa-chevron-down': !mainCtrl.collapseAuthentication}"></i>
+                    </md-button>
+                    <!-- Authentication Accordion -->
+                    <div md-accordion-custom="mainCtrl.collapseAuthentication" id="md-accordion">
+                      <md-button class="padding-left-70px">
+                        Login
+                      </md-button>
+                      <md-button class="padding-left-70px">
+                        Register
+                      </md-button>
+                      <md-button class="padding-left-70px">
+                        Forgot Password
+                      </md-button>
+                      <md-button class="padding-left-70px">
+                        Lock Screen
+                      </md-button>
+                    </div>
+
+                    <md-button class="padding-left-59px">
+                      Coming Soon
+                    </md-button>
+
+                    <md-button class="padding-left-59px" ng-click="mainCtrl.collapseErrors = !mainCtrl.collapseErrors">
+                      Errors
+                      <i class="fa" ng-class="{'fa-chevron-up': mainCtrl.collapseErrors, 'fa-chevron-down': !mainCtrl.collapseErrors}"></i>
+                    </md-button>
+                    <!-- Errors Accordion -->
+                    <div md-accordion-custom="mainCtrl.collapseErrors" id="md-accordion">
+                      <md-button class="padding-left-70px">
+                        404
+                      </md-button>
+                      <md-button class="padding-left-70px">
+                        500
+                      </md-button>
+                    </div>
+
+                    <md-button class="padding-left-59px">
+                      Invoice
+                    </md-button>
+
+                    <md-button class="padding-left-59px">
+                      Maintenance
+                    </md-button>
+
+                    <md-button class="padding-left-59px">
+                      Profile
+                    </md-button>
+
+                    <md-button class="padding-left-59px">
+                      Search
+                    </md-button>
+
+                    <md-button class="padding-left-59px" ng-click="mainCtrl.collapseTimeline = !mainCtrl.collapseTimeline">
+                      Timeline
+                      <i class="fa" ng-class="{'fa-chevron-up': mainCtrl.collapseTimeline, 'fa-chevron-down': !mainCtrl.collapseTimeline}"></i>
+                    </md-button>
+                    <!-- Timeline Accordion -->
+                    <div md-accordion-custom="mainCtrl.collapseTimeline" id="md-accordion">
+                      <md-button class="padding-left-70px">
+                        Default
+                      </md-button>
+                      <md-button class="padding-left-70px">
+                        Left Aligned
+                      </md-button>
+                      <md-button class="padding-left-70px">
+                        Right Aligned
+                      </md-button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- User Interface -->
+                <md-button md-no-ink class="title">
+                  USER INTERFACE
+                </md-button>
+                <!-- User Interface Components -->
+                <div>
+                  <md-button>
+                    <md-icon md-font-icon="fa-text-width" class="fa"></md-icon>
+                    Typography
+                  </md-button>
+
+                  <md-button>
+                    <md-icon md-font-icon="fa-th" class="fa"></md-icon>
+                    Theme Colors
+                  </md-button>
+
+                  <md-button>
+                    <md-icon md-font-icon="fa-paint-brush" class="fa"></md-icon>
+                    Material Colors
+                  </md-button>
+
+                  <md-button>
+                    <md-icon md-font-icon="fa-picture-o" class="fa"></md-icon>
+                    Icons
+                  </md-button>
+
+                  <md-button ng-click="mainCtrl.collapsePageLayouts = !mainCtrl.collapsePageLayouts" ng-class="{'background-color-black-12p': mainCtrl.collapsePageLayouts}">
+                    <md-icon md-font-icon="fa-table" class="fa"></md-icon>
+                    Page Layouts
+                    <i class="fa" ng-class="{'fa-chevron-up': mainCtrl.collapsePageLayouts, 'fa-chevron-down': !mainCtrl.collapsePageLayouts}"></i>
+                  </md-button>
+                  <!-- Page Layouts Accordion -->
+                  <div md-accordion-custom="mainCtrl.collapsePageLayouts" class="background-color-black-12p" id="md-accordion">
+                    <md-button class="padding-left-59px">
+                      Carded
+                    </md-button>
+                    <md-button class="padding-left-59px">
+                      Simple
+                    </md-button>
+                    <md-button class="padding-left-59px">
+                      Blank
+                    </md-button>
+                  </div>
+                </div>
+
+                <!-- Components -->
+                <md-button md-no-ink class="title">
+                  COMPONENTS
+                </md-button>
+                <!-- Components -->
+                <div>
+                  <md-button>
+                    <md-icon md-font-icon="fa-clone" class="fa"></md-icon>
+                    Cards
+                  </md-button>
+
+                  <md-button ng-click="mainCtrl.collapseCharts = !mainCtrl.collapseCharts" ng-class="{'background-color-black-12p': mainCtrl.collapseCharts}">
+                    <md-icon md-font-icon="fa-bar-chart" class="fa"></md-icon>
+                    Charts
+                    <i class="fa" ng-class="{'fa-chevron-up': mainCtrl.collapseCharts, 'fa-chevron-down': !mainCtrl.collapseCharts}"></i>
+                  </md-button>
+                  <!-- Charts Accordion -->
+                  <div md-accordion-custom="mainCtrl.collapseCharts" class="background-color-black-12p" id="md-accordion">
+                    <md-button class="padding-left-59px">
+                      C3
+                    </md-button>
+                    <md-button class="padding-left-59px">
+                      Chart.js
+                    </md-button>
+                    <md-button class="padding-left-59px">
+                      Chartist
+                    </md-button>
+                    <md-button class="padding-left-59px">
+                      nvD3
+                    </md-button>
+                  </div>
+
+                  <md-button ng-click="mainCtrl.collapseElements = !mainCtrl.collapseElements" ng-class="{'background-color-black-12p': mainCtrl.collapseElements}">
+                    <md-icon md-font-icon="fa-cube" class="fa"></md-icon>
+                    Elements
+                    <i class="fa" ng-class="{'fa-chevron-up': mainCtrl.collapseElements, 'fa-chevron-down': !mainCtrl.collapseElements}"></i>
+                  </md-button>
+                  <!-- Elements Accordion -->
+                  <div md-accordion-custom="mainCtrl.collapseElements" class="background-color-black-12p" id="md-accordion">
+
+                    <md-button class="padding-left-59px" ng-click="mainCtrl.collapseInputs = !mainCtrl.collapseInputs">
+                      Inputs
+                      <i class="fa" ng-class="{'fa-chevron-up': mainCtrl.collapseInputs, 'fa-chevron-down': !mainCtrl.collapseInputs}"></i>
+                    </md-button>
+                    <!-- Inputs Accordion -->
+                    <div md-accordion-custom="mainCtrl.collapseInputs" id="md-accordion">
+                      <md-button class="padding-left-70px">
+                        Autocomplete
+                      </md-button>
+                      <md-button class="padding-left-70px">
+                        Checkbox
+                      </md-button>
+                      <md-button class="padding-left-70px">
+                        Tags
+                      </md-button>
+                      <md-button class="padding-left-70px">
+                        Fields
+                      </md-button>
+                      <md-button class="padding-left-70px">
+                        Radio
+                      </md-button>
+                      <md-button class="padding-left-70px">
+                        Select
+                      </md-button>
+                      <md-button class="padding-left-70px">
+                        Slider
+                      </md-button>
+                      <md-button class="padding-left-70px">
+                        Switch
+                      </md-button>
+                    </div>
+
+                    <md-button class="padding-left-59px">
+                      Bottom Sheet
+                    </md-button>
+
+                    <md-button class="padding-left-59px">
+                      Buttons
+                    </md-button>
+
+                    <md-button class="padding-left-59px">
+                      Card
+                    </md-button>
+
+                    <md-button class="padding-left-59px">
+                      Datepicker
+                    </md-button>
+
+                    <md-button class="padding-left-59px">
+                      Dialog
+                    </md-button>
+
+                    <md-button class="padding-left-59px">
+                      Fab Speed Dial
+                    </md-button>
+
+                    <md-button class="padding-left-59px">
+                      Fab Toolbar
+                    </md-button>
+
+                    <md-button class="padding-left-59px">
+                      Menu
+                    </md-button>
+
+                    <md-button class="padding-left-59px">
+                      Menu Bar
+                    </md-button>
+
+                    <md-button class="padding-left-59px">
+                      Progress Circular
+                    </md-button>
+
+                    <md-button class="padding-left-59px">
+                      Progress Linear
+                    </md-button>
+
+                    <md-button class="padding-left-59px">
+                      Sidenav
+                    </md-button>
+
+                    <md-button class="padding-left-59px">
+                      Swipe
+                    </md-button>
+
+                    <md-button class="padding-left-59px">
+                      Tabs
+                    </md-button>
+
+                    <md-button class="padding-left-59px">
+                      Toast
+                    </md-button>
+
+                    <md-button class="padding-left-59px">
+                      Whiteframe
+                    </md-button>
+                  </div>
+
+                  <md-button>
+                    <md-icon md-font-icon="fa-map-marker" class="fa"></md-icon>
+                    Maps
+                  </md-button>
+
+                  <md-button>
+                    <md-icon md-font-icon="fa-hdd-o" class="fa"></md-icon>
+                    Price Tables
+                  </md-button>
+
+                  <md-button>
+                    <md-icon md-font-icon="fa-table" class="fa"></md-icon>
+                    Tables
+                  </md-button>
+                </div>
+            </md-content>
+          <!-- </div> -->
+        </md-sidenav>
+
+        <div id="content-container" layout="column" flex>
+            <md-toolbar id="toolbar" layout="row" class="md-whiteframe-1dp main-nav">
+                <div class="md-layout-row">
+                  <md-button class="md-icon-button" aria-label="Settings" ng-click="mainCtrl.toggleSidenav('mainLeft')">
+                    <md-icon md-font-icon="fa-bars" class="fa fs-1p5em"></md-icon>
+                  </md-button>
+                </div>
+
+                <div class="md-layout-row layout-align-start-center" flex>
+                  <label for="search-input">
+                    <md-icon md-font-icon="fa-search" class="fa search-icon"></md-icon>
+                  </label>
+                  <input flex type="text" id="search-input" placeholder="Search" ng-model="global.search" />
+                </div>
+
+                <div class="md-layout-row layout-align-start-center">
+                    <md-menu md-offset="{{$root.viewportWidth >= 600 ? -161 : -137}} 84" md-position-mode="target-right target" id="user-menu">
+                      <md-button aria-label="Open menu" ng-class="{'padding-left-20px padding-right-20px': $root.viewportWidth >= 600}" ng-click="$mdOpenMenu($event)">
+                        <img class="avatar-wrapper" src="images/yeoman.png" alt="John Doe" />
+                        &nbsp;
+                        <small hide-sm class="username">John Doe</small>
+                        <md-icon hide-sm md-menu-align-target md-font-icon="fa-chevron-down" class="fa fs-10px" style="margin: 13px 0 0 10px;"></md-icon>
+                      </md-button>
+                      <md-menu-content width="3">
+                        <md-menu-item>
+                          <md-button>
+                              <div layout="row">
+                                <md-icon md-menu-align-target md-font-icon="fa-user" class="fa fs-1p3em"></md-icon>
+                                <p flex>My Profile</p>
+                              </div>
+                          </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                          <md-button>
+                              <div layout="row">
+                                <md-icon md-menu-align-target md-font-icon="fa-envelope" class="fa fs-1p3em"></md-icon>
+                                <p flex>Inbox</p>
+                              </div>
+                          </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                          <md-button>
+                              <div layout="row">
+                                <md-icon md-menu-align-target md-font-icon="fa-check-circle" class="fa fs-1p3em"></md-icon>
+                                <p flex>Online</p>
+                              </div>
+                          </md-button>
+                        </md-menu-item>
+                        <md-divider></md-divider>
+                        <md-menu-item>
+                          <md-button>
+                              <div layout="row">
+                                <md-icon md-menu-align-target md-font-icon="fa-sign-out" class="fa fs-1p3em"></md-icon>
+                                <p flex>Logout</p>
+                              </div>
+                          </md-button>
+                        </md-menu-item>
+                        <md-menu-item ng-if>
+                          <md-menu md-position-mode="target-left target" id="user-status-menu">
+                            <md-button aria-label="Open menu" class="user-button border-radius-0 height-64px margin-0 padding-left-20px padding-right-20px text-transform-none" ng-click="$mdOpenMenu($event)">
+                              <div layout="row">
+                                <md-icon md-menu-align-target md-font-icon="fa-check-circle" class="fa fs-1p3em"></md-icon>
+                                <p flex>Online</p>
+                              </div>
+                            </md-button>
+                            <md-menu-content width="3">
+                              <md-menu-item>
+                                <md-button>
+                                    <div layout="row">
+                                      <md-icon md-menu-align-target md-font-icon="fa-user" class="fa fs-1p3em"></md-icon>
+                                      <p flex>My Profile</p>
+                                    </div>
+                                </md-button>
+                              </md-menu-item>
+                              <md-menu-item>
+                                <md-button>
+                                    <div layout="row">
+                                      <md-icon md-menu-align-target md-font-icon="fa-envelope" class="fa fs-1p3em"></md-icon>
+                                      <p flex>Inbox</p>
+                                    </div>
+                                </md-button>
+                              </md-menu-item>
+                              <md-menu-item>
+                                <md-button>
+                                    <div layout="row">
+                                      <md-icon md-menu-align-target md-font-icon="fa-check-circle" class="fa fs-1p3em"></md-icon>
+                                      <p flex>Online</p>
+                                    </div>
+                                </md-button>
+                              </md-menu-item>
+                            </md-menu-content>
+                          </md-menu>
+                        </md-menu-item>
+                      </md-menu-content>
+                    </md-menu>
+                </div>
+
+                <div class="md-layout-row">
+                  <md-menu md-offset="{{$root.viewportWidth >= 600 ? -119 : -95}} 63" md-position-mode="target-right target" id="language-menu">
+                    <md-button aria-label="Open menu" ng-click="$mdOpenMenu($event)">
+                      <md-icon md-menu-origin md-font-icon="fa-flag" class="fa fs-1p5em"></md-icon>
+                      En
+                    </md-button>
+                    <md-menu-content width="3">
+                      <md-menu-item ng-repeat="item in ['English', 'Spanish', 'Turkish']">
+                        <md-button>
+                            <div layout="row">
+                              <md-icon md-menu-align-target md-font-icon="fa-flag" class="fa fs-1p3em"></md-icon>
+                              <p flex>{{item}}</p>
+                            </div>
+                        </md-button>
+                      </md-menu-item>
+                    </md-menu-content>
+                  </md-menu>
+                </div>
+
+                <div class="md-layout-row">
+                  <md-button class="md-icon-button" aria-label="Settings" ng-click="mainCtrl.toggleSidenav('mainRight')">
+                    <md-icon md-font-icon="fa-bars" class="fa fs-1p5em"></md-icon>
+                  </md-button>
+                </div>
+            </md-toolbar>
+
+            <div id="content" layout="row" flex>
+                <div id="dashboard-project" layout="column" flex>
+                  <md-content layout-fill ng-scrollbars ng-scrollbars-config="{axis: 'y', theme: 'dark'}" class="overflow-auto">
+                    <div class="md-layout-row">
+                      <md-button class="md-icon-button" aria-label="Settings" ng-click="mainCtrl.toggleSidenav('sideNavRight')">
+                        <md-icon md-font-icon="fa-bars" class="fa fs-1p5em"></md-icon>
+                      </md-button>
+                    </div>
+                    <div>
+                      x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br />
+                    </div>
+                  </md-content>
+                </div>
+
+                <md-sidenav id="side-nav" layout="column" class="md-sidenav-right md-whiteframe-z2" md-component-id="sideNavRight" md-is-locked-open="$mdMedia('gt-lg')">
+                    <md-content>
+                      sidenav
+                      <div>
+                        x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br />
+                      </div>
+                    </md-content>
+                </md-sidenav>
+            </div>
+
+            <!-- ng-scrollbars ng-scrollbars-config="{axis: 'y', theme: 'dark'}" -->
+            <!-- <div id="content" flex> -->
+            <md-content ng-if id="content" layout="column" flex ng-scrollbars ng-scrollbars-config="{axis: 'y', theme: 'dark'}">
+              <!-- <div id="dashboard-project" layout="row" flex class="page-layout"> -->
+              <div id="dashboard-project" layout="column" flex>
+                <button class="md-button md-primary" ng-click="mainCtrl.toggleSidenav('dashboardProjectRight')">
+                  Button
+                </button>
+                x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br />
+              </div>
+              <md-sidenav id="side-nav-right" layout="column" class="md-sidenav-right md-whiteframe-z2" md-component-id="dashboardProjectRight" xmd-is-locked-open="$mdMedia('gt-lg')">
+                  <md-content>
+                    xxxxxxxxxxxxxxxxxx
+                  </md-content>
+              </md-sidenav>
+            </md-content>
+            <!-- </div> -->
+
+            <md-content ng-if flex ng-scrollbars ng-scrollbars-config="{axis: 'y', theme: 'dark'}">
+              <div id="" class="md-whiteframe-z3" xlayout="column" flex>
+                <button class="md-button md-primary" ng-click="mainCtrl.toggleSidenav('dashboardProjectRight')">
+                  Button
+                </button>
+                x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br /> x <br />
+              </div>
+
+              <md-sidenav id="" layout="column" class="md-sidenav-right md-whiteframe-z2 width-250px" md-component-id="dashboardProjectRight" xmd-is-locked-open="$mdMedia('gt-md')">
+                <md-content ng-click="mainCtrl.toggleSidenav('dashboardProjectRight')">
+                  xxxxxxxxxxxxxxxxxxxxx
+                </md-content>
+              </md-sidenav>
+            </md-content>
+        </div>
+
+        <md-sidenav id="quick-panel" layout="column" class="md-sidenav-right md-whiteframe-z2" md-component-id="mainRight">
+            <md-content>
+              <md-tabs id="md-tabs-id" md-no-pagination md-dynamic-heightx md-border-bottomx md-stretch-tabs="always">
+                <!-- Today Tab -->
+                <md-tab label="Today">
+                  <md-content layout="column" ng-scrollbars ng-scrollbars-config="{axis: 'y'}">
+                    <md-list>
+                      <md-subheader class="md-no-sticky">TODAY</md-subheader>
+                      <!-- <md-list-item class="md-2-line">
+                          <div>Friday</div>
+                          <div>
+                            <span>11</span>
+                            <span class="md-subhead">th</span>
+                            <span>December</span>
+                          </div>
+                        </div>
+                      </md-list-item> -->
+                      <md-divider></md-divider>
+
+                      <md-subheader class="md-no-sticky">Events</md-subheader>
+                      <md-list-item class="md-2-line">
+                        <md-button>
+                          <div class="md-list-item-text" layout="column">
+                            <h4>Group Meeting</h4>
+                            <p>In 32 Minutes, Room 18</p>
+                          </div>
+                        </md-button>
+                      </md-list-item>
+                      <md-list-item class="md-2-line">
+                        <md-button>
+                          <div class="md-list-item-text" layout="column">
+                            <h4>Public Beta Release</h4>
+                            <p>11:00 PM</p>
+                          </div>
+                        </md-button>
+                      </md-list-item>
+                      <md-list-item class="md-2-line">
+                        <md-button>
+                          <div class="md-list-item-text" layout="column">
+                            <h4>Dinner with David</h4>
+                            <p>17:30 PM</p>
+                          </div>
+                        </md-button>
+                      </md-list-item>
+                      <md-list-item class="md-2-line">
+                        <md-button>
+                          <div class="md-list-item-text" layout="column">
+                            <h4>Q&A Session</h4>
+                            <p>20:30 PM</p>
+                          </div>
+                        </md-button>
+                      </md-list-item>
+                      <md-divider ></md-divider>
+
+                      <md-subheader class="md-no-sticky">Notes</md-subheader>
+                      <md-list-item class="md-2-line">
+                        <md-button>
+                          <div class="md-list-item-text" layout="column">
+                            <h4>Best songs to listen while working</h4>
+                            <p>Last edit: May 28th, 2015</p>
+                          </div>
+                        </md-button>
+                      </md-list-item>
+                      <md-list-item class="md-2-line">
+                        <md-button>
+                          <div class="md-list-item-text" layout="column">
+                            <h4>Useful subreddits</h4>
+                            <p>Last edit: January 12th, 2015</p>
+                          </div>
+                        </md-button>
+                      </md-list-item>
+                      <md-divider ></md-divider>
+
+                      <md-subheader class="md-no-sticky" ng-init="mainCtrl.notifications.enabled = true; mainCtrl.retro.enabled = true;">Quick Settings</md-subheader>
+                      <md-list-item>
+                        <p>Notifications</p>
+                        <md-switch class="md-secondary" ng-model="mainCtrl.notifications.enabled"></md-switch>
+                      </md-list-item>
+                      <md-list-item>
+                        <p>Cloud Sync</p>
+                        <md-switch class="md-secondary" ng-model="mainCtrl.cloud.enabled"></md-switch>
+                      </md-list-item>
+                      <md-list-item>
+                        <p>Retro Thrusters</p>
+                        <md-switch class="md-secondary" ng-model="mainCtrl.retro.enabled"></md-switch>
+                      </md-list-item>
+                    </md-list>
+                  </md-content>
+                </md-tab>
+                <!-- Chat Tab -->
+                <md-tab label="Chat" id="chat-tab">
+                  <md-content layout="column" ng-init="mainCtrl.chatActive = true">
+                    <md-slide-box-custom ng-if active-slide="'0'" slide-box-width="'330px'" slide-box-target-width="#md-tabs-id">
+                      <md-slide-custom>
+                        Slide 1
+                      </md-slide-custom>
+                      <md-slide-custom>
+                        Slide 2
+                      </md-slide-custom>
+                      <md-slide-custom>
+                        Slide 2
+                      </md-slide-custom>
+                    </md-slide-box-custom>
+
+                    <!-- Main -->
+                    <div ng-if class="main animated" ng-class="{'slideInLeft': mainCtrl.chatActive}" ng-hide="mainCtrl.chatActive">
+                      <md-list>
+                        <md-subheader class="md-no-sticky">Recent</md-subheader>
+
+                        <md-list-item class="md-2-line">
+                          <md-button class="md-no-style" ng-click="mainCtrl.chatActive = true">
+                            <div class="md-list-item-inner">
+                              <img alt="" src="images/yeoman.png" class="md-avatar" />
+                              <div class="md-list-item-text">
+                                <h4>Alice Freeman</h4>
+                                <p>Are you going to commit latest?</p>
+                              </div>
+                            </div>
+                          </md-button>
+                        </md-list-item>
+
+                        <md-list-item class="md-2-line">
+                          <md-button class="md-no-style">
+                            <div class="md-list-item-inner">
+                              <img alt="" src="images/yeoman.png" class="md-avatar" />
+                              <div class="md-list-item-text">
+                                <h4>Joyce Walters</h4>
+                                <p>Something wrong with our servers</p>
+                              </div>
+                            </div>
+                          </md-button>
+                        </md-list-item>
+
+                        <md-list-item class="md-2-line">
+                          <md-button class="md-no-style">
+                            <div class="md-list-item-inner">
+                              <img alt="" src="images/yeoman.png" class="md-avatar" />
+                              <div class="md-list-item-text">
+                                <h4>Vincent Munoz</h4>
+                                <p>Everybody, quickly gather in the cafeteria.</p>
+                              </div>
+                            </div>
+                          </md-button>
+                        </md-list-item>
+                      </md-list>
+
+                      <md-divider></md-divider>
+
+                      <md-list>
+                        <md-subheader class="md-no-sticky">Start New Chat</md-subheader>
+
+                        <md-list-item class="md-1-line">
+                          <md-button class="md-no-style">
+                            <div class="md-list-item-inner">
+                              <img alt="" src="images/yeoman.png" class="md-avatar" />
+                              <div class="md-list-item-text">
+                                <h4>Alice Freeman</h4>
+                              </div>
+                            </div>
+                          </md-button>
+                        </md-list-item>
+
+                        <md-list-item class="md-1-line">
+                          <md-button class="md-no-style">
+                            <div class="md-list-item-inner">
+                              <img alt="" src="images/yeoman.png" class="md-avatar" />
+                              <div class="md-list-item-text">
+                                <h4>Joyce Walters</h4>
+                              </div>
+                            </div>
+                          </md-button>
+                        </md-list-item>
+
+                        <md-list-item class="md-1-line">
+                          <md-button class="md-no-style">
+                            <div class="md-list-item-inner">
+                              <img alt="" src="images/yeoman.png" class="md-avatar" />
+                              <div class="md-list-item-text">
+                                <h4>Vincent Munoz</h4>
+                              </div>
+                            </div>
+                          </md-button>
+                        </md-list-item>
+
+                        <md-list-item class="md-1-line">
+                          <md-button class="md-no-style">
+                            <div class="md-list-item-inner">
+                              <img alt="" src="images/yeoman.png" class="md-avatar" />
+                              <div class="md-list-item-text">
+                                <h4>Alice Freeman</h4>
+                              </div>
+                            </div>
+                          </md-button>
+                        </md-list-item>
+
+                        <md-list-item class="md-1-line">
+                          <md-button class="md-no-style">
+                            <div class="md-list-item-inner">
+                              <img alt="" src="images/yeoman.png" class="md-avatar" />
+                              <div class="md-list-item-text">
+                                <h4>Joyce Walters</h4>
+                              </div>
+                            </div>
+                          </md-button>
+                        </md-list-item>
+
+                        <md-list-item class="md-1-line">
+                          <md-button class="md-no-style">
+                            <div class="md-list-item-inner">
+                              <img alt="" src="images/yeoman.png" class="md-avatar" />
+                              <div class="md-list-item-text">
+                                <h4>Vincent Munoz</h4>
+                              </div>
+                            </div>
+                          </md-button>
+                        </md-list-item>
+                      </md-list>
+                    </div>
+                    <!-- Chat -->
+                    <div class="chat animated" ng-class="{'slideInRight': !mainCtrl.chatActive}" ng-showX="mainCtrl.chatActive">
+                      <md-toolbar layout="row">
+                        <div class="md-toolbar-tools md-layout-row layout-align-space-between-center">
+                          <div class="md-layout-row layout-align-start-center">
+                            <md-button class="md-icon-button">
+                              <md-icon md-font-icon="fa-chevron-left" class="fa fs-1p3em margin-top-5px"></md-icon>
+                            </md-button>
+                            <span class="fs-14px">Alice Freeman</span>
+                          </div>
+
+                          <div class="md-layout-row layout-align-end-center">
+                            <md-button class="md-icon-button">
+                              <md-icon md-font-icon="fa-ellipsis-v margin-top-5px" class="fa fs-1p3em"></md-icon>
+                            </md-button>
+                          </div>
+                        </div>
+                      </md-toolbar>
+
+                      <md-content>
+                        <md-list>
+                          <md-subheader class="md-no-sticky">Recent</md-subheader>
+
+                          <md-list-item class="md-2-line">
+                            <md-button class="md-no-style" ng-click="mainCtrl.chatActive = false">
+                              <div class="md-list-item-inner">
+                                <img alt="" src="images/yeoman.png" class="md-avatar" />
+                                <div class="md-list-item-text">
+                                  <h4>Alice Freeman</h4>
+                                  <p>Are you going to commit latest?</p>
+                                </div>
+                              </div>
+                            </md-button>
+                          </md-list-item>
+                        </md-list>
+                      </md-content>
+                    </div>
+                  </md-content>
+                </md-tab>
+                <!-- Activity Tab -->
+                <md-tab label="Activity">
+                  <md-content layout="column">
+                    <md-list>
+                      <md-subheader class="md-no-sticky">Friends</md-subheader>
+
+                      <md-list-item class="md-3-line">
+                        <img alt="" src="images/yeoman.png" class="md-avatar" />
+                        <div class="md-list-item-text">
+                          <h3>Alice Freeman</h3>
+                          <p>Are you going to commit latest?</p>
+                        </div>
+                      </md-list-item>
+
+                      <md-list-item class="md-3-line">
+                        <img alt="" src="images/yeoman.png" class="md-avatar" />
+                        <div class="md-list-item-text">
+                          <h4>Joyce Walters</h4>
+                          <p>Something wrong with our servers</p>
+                        </div>
+                      </md-list-item>
+                    </md-list>
+
+                    <md-divider></md-divider>
+
+                    <md-list>
+                      <md-subheader class="md-no-sticky">Application Servers</md-subheader>
+
+                      <md-list-item class="md-2-line">
+                        <div class="md-list-item-inner">
+                          <md-icon md-font-icon="fa-circle" class="fa fs-1em margin-left-right-16px"></md-icon>
+                          <div class="md-list-item-text">
+                            <h4>US East Zone</h4>
+                            <p>Load: Normal, CPU: 32%, Memory: 52%</p>
+                          </div>
+                        </div>
+                      </md-list-item>
+
+                      <md-list-item class="md-2-line">
+                        <div class="md-list-item-inner">
+                          <md-icon md-font-icon="fa-circle" class="fa fs-1em margin-left-right-16px"></md-icon>
+                          <div class="md-list-item-text">
+                            <h4>US West Zone</h4>
+                            <p>Load: Normal, CPU: 19%, Memory: 38%</p>
+                          </div>
+                        </div>
+                      </md-list-item>
+
+                      <md-list-item class="md-2-line">
+                        <div class="md-list-item-inner">
+                          <md-icon md-font-icon="fa-circle" class="fa fs-1em margin-left-right-16px"></md-icon>
+                          <div class="md-list-item-text">
+                            <h4>US West Zone</h4>
+                            <p>Load: Normal, CPU: 19%, Memory: 38%</p>
+                          </div>
+                        </div>
+                      </md-list-item>
+                    </md-list>
+
+                    <md-divider></md-divider>
+
+                    <md-list>
+                      <md-subheader class="md-no-sticky">User Stats</md-subheader>
+
+                      <md-list-item class="md-2-line">
+                        <div class="md-list-item-text">
+                          <p>Storage (2010 / 4096)</p>
+                          <md-progress-linear md-mode="indeterminate" value="49"></md-progress-linear>
+                        </div>
+                      </md-list-item>
+
+                      <md-list-item class="md-2-line">
+                        <div class="md-list-item-text">
+                          <p>Cloud (3770 / 4096)</p>
+                          <md-progress-linear md-mode="indeterminate" value="49"></md-progress-linear>
+                        </div>
+                      </md-list-item>
+
+                      <md-list-item class="md-2-line">
+                        <div class="md-list-item-text">
+                          <p>Projects (5 / 20)</p>
+                          <md-progress-linear md-mode="indeterminate" value="49"></md-progress-linear>
+                        </div>
+                      </md-list-item>
+                    </md-list>
+                  </md-content>
+                </md-tab>
+              </md-tabs>
+            </md-content>
+        </md-sidenav>
+    </div>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <!--script src="bower_components/angular-resource/angular-resource.min.js"></script-->
+    <!--script src="bower_components/angular-route/angular-route.min.js"></script-->
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <!--script src="bower_components/angular-touch/angular-touch.min.js"></script-->
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-material/angular-material.min.js"></script>
+
+    <!-- <script src="bower_components/ng-scrollbar/dist/ng-scrollbar.min.js"></script> -->
+    <script src="bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="bower_components/ng-scrollbars/dist/scrollbars.min.js"></script>
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/directives.js"></script>
+
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/about.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
